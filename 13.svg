@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="297.000mm" height="210.000mm" viewBox="0.000000 0.000000 297.000000 210.000000" stroke-linejoin="round" stroke-linecap="round" fill="none" fill-rule="evenodd"><desc>Composer Export</desc><script type="text/ecmascript"><![CDATA[
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="auto" style="max-width: 100%; height: auto;" viewBox="0.000000 0.000000 297.000000 210.000000" stroke-linejoin="round" stroke-linecap="round" fill="none" fill-rule="evenodd"><desc>Composer Export</desc><script type="text/ecmascript"><![CDATA[
 if(typeof(top) != "undefined")
 {
 	top.ShowPaper = ShowPaper;
@@ -56,15 +56,12 @@ function ShowToolTip(evt,hotspotid,strTooltip)
 
 	// get default width of svg
 
-	var strW = root.getAttribute("width");
-	var svgW = parseFloat(strW);
-	if(strW.indexOf('mm') != -1)
-	svgW *= 3.779;
+	
+    // get real width of svg in pixels (Responsive Fix)
+    var rect = root.getBoundingClientRect();
+    var svgW = rect.width;
+    var svgH = rect.height;
 
-	var strH = root.getAttribute("height");
-	var svgH = parseFloat(strH);
-	if(strH.indexOf('mm') != -1)
-	svgH *= 3.779;  	// 96 dpi  -> 96/25.4 = 3.779
 
 	// update the viewbox / width / height if svg is embedded in html with zoom fit all
 	var realx0 = x0;
